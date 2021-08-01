@@ -6,7 +6,7 @@ var scene,camera,renderer;
 
 function init(){
     scene = new THREE.Scene();
-    scene.fog = new THREE.Fog(0x000000,0.1,10);
+    // scene.fog = new THREE.Fog(0x000000,0.1,10);
 
     camera = new THREE.PerspectiveCamera(45,window.innerWidth/window.innerHeight,0.1,1000);
     camera.position.z = 10;
@@ -23,14 +23,14 @@ function init(){
 function loadModel(){
 
     var textureLoader = new THREE.TextureLoader();
-    textureLoader.load("baked.jpg",(texture)=>{
+    textureLoader.load("./baked.jpg",(texture)=>{
         texture.flipY = false;
         texture.encoding = THREE.sRGBEncoding;
 
         var material = new THREE.MeshBasicMaterial({map: texture});
 
         var loader = new GLTFLoader();
-        loader.load("/custom scene grave.glb",(gltf)=>{
+        loader.load("./custom scene grave.glb",(gltf)=>{
 
             gltf.scene.traverse((child)=>{
                 if(child.type=="Mesh"){
